@@ -7,11 +7,11 @@ namespace WhileProgram
         static void Main()
         {
             int i = 0;
-            while (i < 5)
+            do
             {
                 Console.WriteLine(i);
                 i++;
-            }
+            }   while (i < 5);
         }
     }
 }
