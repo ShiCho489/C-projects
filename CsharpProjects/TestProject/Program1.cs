@@ -1,43 +1,35 @@
 ﻿using System;
+using System.IO;
 
-namespace MenuExample
+public class Program
 {
-    class Program 
-    {
-
-   
     static void Main(string[] args)
     {
-       //print a menu
-      Console.WriteLine("Please select: ");
-      Console.WriteLine("1) Water");
-      Console.WriteLine("2) Juice");
-      Console.WriteLine("3) Lemon");
-      Console.WriteLine("4) Quit");
+		string fileName, content;
+        // Check if a command line argument was provided
+        if (args.Length == 0)
+        {
+            Console.WriteLine("No filename provided!");
+        }
+        else
+        {
+            // Get the filename from the command line argument
+            fileName = args[0];
 
-      //get the user input
-      int select = int.Parse(Console.ReadLine());
+            // Check if the file exists
+            if (File.Exists(fileName))
+            {
+                // Read the content of the file
+                content = File.ReadAllText(fileName);
 
-      //switch on the user's input
-      switch(select)
-      {
-        case 1:
-          Console.WriteLine(" you selected Water");
-          break;
-        case 2: 
-           Console.WriteLine("you selected Juice");
-           break;
-        case 3: 
-           Console.WriteLine("you selected Lemon");
-           break;
-        case 4: 
-           Console.WriteLine("Quit");
-           break;
-        default: 
-           Console.WriteLine("Invalid selection.");
-           break;
-      }
-      }
+                // Print the content of the file to the console
+                Console.WriteLine(content);
+            }
+            else
+            {
+                // The file does not exist
+                Console.WriteLine("File does not exist!");
+            }
+        }
     }
-      
 }
